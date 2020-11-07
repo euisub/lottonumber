@@ -1,0 +1,205 @@
+body {
+    background: #555
+        url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);
+    font: 13px 'Lucida sans', Arial, Helvetica;
+    color: #eee;
+    text-align: center;
+}
+
+a {
+    color: #ccc;
+}
+
+/*-------------------------------------*/
+
+.form-wrapper-dark-cf .cf:before,
+.form-wrapper-dark-cf .cf:after {
+    content: '';
+    display: table;
+}
+
+.form-wrapper-dark-cf .cf:after {
+    clear: both;
+}
+
+.form-wrapper-dark-cf .cf {
+    zoom: 1;
+}
+
+/*-------------------------------------*/
+
+.byline p {
+    text-align: center;
+    color: #c6c6c6;
+    font: bold 18px Arial, Helvetica, Sans-serif;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.byline p a {
+    color: #d83c3c;
+    text-decoration: none;
+}
+
+.title_name {
+    margin: 30px auto 50px auto;
+}
+
+.title_name h2 {
+    text-align: center;
+    color: #c6c6c6;
+    font: bold 50px Arial, Helvetica, Sans-serif;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.title_name .p1 p {
+    text-align: center;
+    color: #c6c6c6;
+    font: bold 20px Arial, Helvetica, Sans-serif;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+.title_name .p2 p {
+    text-align: center;
+    color: #c6c6c6;
+    font: bold 18px Arial, Helvetica, Sans-serif;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+.title_name .p3 p {
+    text-align: left;
+    color: white;
+    font: bold 16px Arial, Helvetica, Sans-serif;
+    margin: 0;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+.box {
+    width: 40%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 35px;
+    border: 2px solid #fff;
+    border-radius: 20px/50px;
+    background-clip: padding-box;
+    text-align: center;
+}
+
+.button {
+    font-size: 1em;
+    padding: 10px;
+    color: #fff;
+    border: 2px solid #06d85f;
+    border-radius: 20px/50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+.button:hover {
+    background: #06d85f;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 80%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup p{
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+.popup .close:hover {
+    color: #06d85f;
+}
+.popup .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+    .box {
+        width: 70%;
+    }
+    .popup {
+        width: 70%;
+    }
+}
+
+.naveSize {
+    margin: 150px auto 10px auto;
+    text-align: center;
+    color: #c6c6c6;
+    font: bold 18px Arial, Helvetica, Sans-serif;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (min-width: 768px) {
+    .title_name h2 {
+        font: bold 78px Arial, Helvetica, Sans-serif;
+    }
+    .title_name .p1 p {
+        font: bold 35px Arial, Helvetica, Sans-serif;
+    }
+
+    .naveSize {
+        font: bold 36px Arial, Helvetica, Sans-serif;
+    }
+}
+
+@media (min-width: 1024px) {
+    .title_name h2 {
+        font: bold 50px Arial, Helvetica, Sans-serif;
+    }
+    .title_name .p1 p {
+        font: bold 20px Arial, Helvetica, Sans-serif;
+    }
+
+    .naveSize {
+        font: bold 18px Arial, Helvetica, Sans-serif;
+    }
+}

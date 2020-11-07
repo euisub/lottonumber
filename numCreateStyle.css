@@ -1,0 +1,561 @@
+h4 {
+	font-size : 1.2em;
+}
+
+.main_right {
+    background: #eeeeee50;
+    /* width: 1500px; */
+    margin: 0 auto;
+    padding: 2em 50px 0.5em;
+    padding-bottom: 20px;
+    text-align: left;
+    border-radius: 1em;
+}
+
+.main_left {
+    background: #eeeeee50;
+    /* width: 1500px; */
+    margin: 0 auto;
+    padding: 2em 0 0.5em;
+    padding-bottom: 20px;
+    border-radius: 1em;
+}
+
+.main_left > p {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.num-text-box {
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 16px;
+    border: 1px dashed white;
+    box-sizing: border-box;
+}
+/* 
+.wrapper {
+    width: 50vw;
+    margin: 2.5em auto;
+} */
+
+#btnGenerate {
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+}
+
+#btnGenerate:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+#btnGenerate_d {
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+}
+
+#btnGenerate_d:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+#btnGenerate_x {
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+}
+
+#btnGenerate_x:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+
+#popup_style {
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+	
+	
+}
+
+#popup_style:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+
+
+/* pop 2*/
+
+#btnGenerate_2 {
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+}
+
+#btnGenerate_2:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+
+#btnGenerate_b , #btnGenerate_b_2 {
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+}
+
+#btnGenerate_b:hover , #btnGenerate_b_2:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+
+
+#btnGenerate_s_2 {
+    padding: 0.5em;
+    font-weight: 600;
+    background: #2d3e50;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+}
+
+#btnGenerate_s_2:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+
+#btnGenerate_x_2:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+
+#btnGenerate_d_2 {
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+}
+
+#btnGenerate_d_2:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+#btnGenerate_x_2 {
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+}
+
+.btnCot {
+    /* width: 100px; */
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+}
+
+.btnCot:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+
+.clickNumOne {
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+}
+.clickNumTwo {
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: #fff;
+    background-color: red;
+}
+.clickNumThree {
+    padding: 0.5em;
+    font-weight: 600;
+    background: transparent;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: black;
+    background-color: yellow;
+}
+
+/* .clickNumOne:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+} */
+
+/* .clickNumTwo:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+}
+.clickNumThree:hover {
+    background: white;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+} */
+
+
+@media (min-width: 768px) {
+	
+.table_1 tr { display: block; float: left; }
+.table_1 th, .table_1 td { display: block; }
+
+	.main_left > br{
+		display : none;
+	}
+	
+    #btnGenerate,
+    #btnGenerate_x,
+    #btnGenerate_d,
+	#btnGenerate_b,
+	#btnGenerate_b_2,
+    #btnGenerate_2,
+    #btnGenerate_x_2,
+    #btnGenerate_d_2 {
+        width: 210px;
+        font-size: 2em;
+    }
+
+    #btnGenerate_s_2 , #popup_style {
+        width: 150px;
+        font-size: 2em;
+    }
+
+    .clickNumOne,
+    .clickNumTwo,
+    .clickNumThree {
+        width: 97px;
+        font-size: 3em;
+    }
+
+    .t_left .btnCot {
+        width: 125px;
+        font-size: 1em;
+    }
+	
+	
+}
+
+@media (min-width: 1024px) {
+	
+.table_1	tr { display: block; float: left; }
+.table_1 th, .table_1 td { display: inline-block; }
+	
+    #btnGenerate,
+    #btnGenerate_x,
+    #btnGenerate_d,
+	#btnGenerate_b,
+	#btnGenerate_b_2,
+    #btnGenerate_2,
+    #btnGenerate_x_2,
+    #btnGenerate_d_2 {
+        width: 160px;
+        font-size: 1.5em;
+    }
+
+    #btnGenerate_s_2 {
+        width: 100px;
+        font-size: 1.5em;
+    }
+	#popup_style {
+		width: 80px;
+        font-size: 1em;
+	}
+	
+    .clickNumOne,
+    .clickNumTwo,
+    .clickNumThree {
+        width: 50px;
+        font-size: 1.5em;
+    }
+
+    .l_left .btnCot {
+        width: 100px;
+        font-size: 1.25em;
+    }
+	
+}
+
+.main_right div{
+	display :inline;
+}
+
+.wrapper ul {
+    margin: 1em;
+    padding: 0.5em;
+}
+
+.wrapper li {
+    list-style: none;
+    margin: 0.5em;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+@media (min-width: 768px) {
+	
+	.t_left {
+		display : block;
+	}
+	.l_left {
+		display : none;
+	}
+	
+	.nbsp_1 {
+		display : inline-block;
+	}
+    .nbsp_2 {
+		display : none;
+	}
+	
+	.main_right .nbsp_1 {
+		display : inline-block;
+	}
+	.main_right .nbsp_2 {
+		display : none;
+	}
+
+    .main_left {
+        width: 860px;
+        height: 150px;
+		padding : 10px 50px 10px;
+		text-align: left;
+    }
+    .main_right {
+        width: 860px;
+        height: 800px;
+    }
+    .t_left > p {
+        font-size: 1.3em;
+        margin-top: 3px;
+        margin-bottom: 3px;
+		display : inline-block;
+		width : 148px;
+		text-align : center;
+    }
+	
+	.main_right > p {
+		 font-size: 2.1em;
+		 display : inline-block;
+	}
+	
+	.t_left > select {
+		display : inline-block;
+		width : 308px;
+	}
+
+    .wrapper li {
+        font-size: 2.5em;
+    }
+	
+	.num-text-box {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 5px;
+    border: 1px dashed white;
+}
+	
+	.num-text-box-sa {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 5px;
+    border: 1px dashed black;
+}
+	
+	.num-text-box-sa  p{
+	font-size: 1.5em;
+}
+}
+
+@media (min-width: 1024px) {
+	
+	.t_left {
+		display : none;
+	}
+	.l_left {
+		display : inline-block;
+	}
+	
+	.nbsp_1 {
+		display : none;
+	}
+	.nbsp_2 {
+		display : block;
+	}
+	
+	.main_right .nbsp_1 {
+		display : none;
+	}
+	.main_right .nbsp_2 {
+		display : block;
+	}
+
+    .main_left {
+        width: 150px;
+        height: 550px;
+		padding : 7px;
+		text-align: center;
+    }
+    .main_right {
+        width: 525px;
+        height: 550px;
+    }
+    .l_left > p {
+        font-size: 0.8rem;
+        margin-top: 2.3px;
+        margin-bottom: 2.3px;
+    }
+	
+	.main_right > p {
+		 font-size: 1.1em;
+		 display : inline-block;
+	}
+    .wrapper li {
+        font-size: 1.5em;
+    }
+}
+
+.popSel {
+    text-align: left;
+}
+
+.pricing-switcher {
+    text-align: center;
+}
+
+.pricing-switcher .fieldset {
+    display: inline-block;
+    position: relative;
+    padding: 2px;
+    border-radius: 50em;
+    border: 2px solid #2d3e50;
+}
+
+.pricing-switcher input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+}
+
+.pricing-switcher label {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    float: left;
+    width: 90px;
+    height: 40px;
+    line-height: 50px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.pricing-switcher .switch {
+    position: absolute;
+    top: 6px;
+    left: 2px;
+    height: 40px;
+    width: 90px;
+    background-color: #2d3e50;
+    border-radius: 50em;
+    -webkit-transition: -webkit-transform 0.5s;
+    -moz-transition: -moz-transform 0.5s;
+    transition: transform 0.5s;
+}
+
+.pricing-switcher input[type='radio']:checked + label + .switch,
+.pricing-switcher input[type='radio']:checked + label:nth-of-type(n) + .switch {
+    -webkit-transform: translateX(90px);
+    -moz-transform: translateX(90px);
+    -ms-transform: translateX(90px);
+    -o-transform: translateX(90px);
+    transform: translateX(90px);
+}
+
+@media (min-width: 768px) {
+    .pricing-switcher .switch {
+        height: 80px;
+        width: 180px;
+    }
+
+    .pricing-switcher label {
+        height: 80px;
+        width: 180px;
+        font-size: 3em;
+        line-height: 90px;
+    }
+
+    .pricing-switcher input[type='radio']:checked + label + .switch,
+    .pricing-switcher input[type='radio']:checked + label:nth-of-type(n) + .switch {
+        -webkit-transform: translateX(180px);
+        -moz-transform: translateX(180px);
+        -ms-transform: translateX(180px);
+        -o-transform: translateX(180px);
+        transform: translateX(180px);
+    }
+}
+
+@media (min-width: 1023px) {
+    .pricing-switcher .switch {
+        height: 40px;
+        width: 90px;
+    }
+
+    .pricing-switcher label {
+        height: 40px;
+        width: 90px;
+        font-size: 1.4rem;
+        line-height: 50px;
+    }
+
+    .pricing-switcher input[type='radio']:checked + label + .switch,
+    .pricing-switcher input[type='radio']:checked + label:nth-of-type(n) + .switch {
+        -webkit-transform: translateX(90px);
+        -moz-transform: translateX(90px);
+        -ms-transform: translateX(90px);
+        -o-transform: translateX(90px);
+        transform: translateX(90px);
+    }
+}

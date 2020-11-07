@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script
+            type="text/javascript"
+            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f9c4521d57fa994"
+        ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+            integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+            crossorigin="anonymous"
+        />
+
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="numCreateStyle.css" />
+        <link rel="stylesheet" href="ballStyle.css" />
+    </head>
+    <body>
+        <script type="text/javascript" src="numCreateJS.js"></script>
+        <!-- 검색 js -->
+
+        <ul class="nav justify-content-center naveSize">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">꿈해몽</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="fortune.html">오늘의 운세</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="numCheck.html">1등번호&장소확인</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="place.html">주변로또판매점</a>
+            </li> -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="numCC.html">로또번호생성</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="suda.html">방명록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="cucu.html">광고</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+                    >Disabled</a
+                >
+            </li> -->
+        </ul>
+
+        <div class="title_name">
+            <h2>Lotto Number Generator</h2>
+            <div class="p1">
+                <p>자동 or 반자동으로 행운의 숫자조합을 만들어보세요.</p>
+            </div>
+        </div>
+
+        <div class="pricing-switcher">
+            <p class="fieldset">
+                <input
+                    type="radio"
+                    name="check"
+                    value="1"
+                    id="monthly-1"
+                    onclick="popNum(this.value)"
+                    checked
+                />
+                <label for="monthly-1">자동</label>
+                <input
+                    type="radio"
+                    name="check"
+                    value="2"
+                    id="yearly-1"
+                    onclick="popNum(this.value)"
+                />
+                <label for="yearly-1">반자동</label>
+                <span class="switch"></span>
+            </p>
+        </div>
+
+        <div id="pop3" style="display: none;">
+            <div class="num-text-box-sa p3" data-maxlength="600" style="text-align: left;">
+                <h2 style="text-align: center;">반자동 사용방법 & 주의사항</h2>
+
+                <p>- 설정값 없이 번호생성 클릭시 자동과 같습니다.</p>
+                <br />
+
+                <p>- 01~09, 10~19, 20~29, 30~39, 40~45</p>
+                <p>각 숫자 사이 갯수를 지정할 수 있습니다.</p>
+                <br />
+
+                <p>ex) 01~09 2개 , 10~19 1개, 20~29 1개 ,30~39 1개 ,40~45 1개 선택 시</p>
+                <p>생성번호 각 자리 갯수에 맞게 생성됩니다. ( 4,6,11,21,36,42 )</p>
+                <p>- 각각 1개씩 선택시 1개씩만 생성되기때문에 5개의 숫자조합이 생성됩니다.</p>
+                <p>- 지정갯수의 합이 6를 넘을 수 없습니다.</p>
+                <p>ex) 01~09 3개 , 10~19 2개, 20~29 2개 = 총 7개 (로또조합은 6개입니다.)</p>
+                <br />
+
+                <p>* 숫자패드 *</p>
+                <p>- 한번클릭 = 제외시키고 싶은 숫자 (빨강)</p>
+                <p>- 두번클릭 = 포함시키고 싶은 숫자 (노랑)</p>
+                <p>- 세번클릭 = 취소 입니다.</p>
+                <br />
+
+                <p>ex) 2,3,4 숫자를 한번클릭(빨강)하여 제외시키고</p>
+                <p>1,5,6 숫자를 두번클릭(노랑)하여 포함시키면</p>
+                <p>1,5,6 이 포함되고 2,3,4가 제외된 6자리 조합번호가 생성됩니다.</p>
+                <br />
+
+                <p>- 로또조합은 6자리 숫자입니다. 따라서 최소한 6개가 남아있거나</p>
+                <p>최대 6개를 포함 할 수 있습니다.</p>
+                <p>[제외(빨강) 최대갯수 37개 / 포함(노랑) 최대갯수 6개 ]</p>
+                <br />
+
+                <p>- 지정갯수와 숫자패드 설정을 혼합하여 사용 할 수 있습니다.</p>
+                <br />
+
+                <p>* 지정갯수 설정과 숫자패드 설정시 주의사항 *</p>
+                <p>
+                    - 01~09 숫자중 3개 선택시 숫자패드 01~09 숫자중 포함(노랑)이 3개가 넘을 수
+                    없으며
+                </p>
+                <p>제외(빨강)하고 남은 수가 3개미만이면 안됩니다.</p>
+                <br />
+
+                <p>ex) 01~09 3개 선택 , [숫자패드] 1,2,3,4 포함(노랑)</p>
+                <p>- 지정갯수는 3개인데 포함갯수는 4개 임으로 안됩니다.</p>
+                <br />
+
+                <p>ex) 01~09 3개 선택, [숫자패드] 1,2,3,4,5,6,7 제외(빨강)</p>
+                <p>- 지정갯수는 3개인데 제외되고 남은수가 8,9 2개 뿐임으로 안됩니다.</p>
+                <br />
+
+                <p>- 포함갯수가 지정갯수보다 작을 순 있습니다.</p>
+                <br />
+
+                <p>
+                    ex) 01~09 3개 지정 2,3 포함(노랑) 2,3을 포함한 01~09 사이 3개의 수가 생성됩니다.
+                </p>
+                <p>2,3,5 / 2,3,6 / 1,2,3 등등</p>
+                <br />
+
+                <p>자동 or 반자동으로 행운의 숫자조합을 만들어보세요!!</p>
+            </div>
+        </div>
+        <div id="pop1">
+            <div class="wrapper">
+                <button type="button" id="btnGenerate">번호생성</button
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" id="btnGenerate_b">전체복사</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" id="btnGenerate_d">번호삭제</button
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" id="btnGenerate_x">초기화</button>
+            </div>
+        </div>
+
+        <div id="pop2" style="display: none;">
+            <div class="nbsp_1">
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                <button type="button" id="popup_style" onclick="popNum(3)">사용방법</button
+                ><br /><br />
+            </div>
+            <div class="nbsp_2">
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                <button type="button" id="popup_style" onclick="popNum(3)">사용방법</button
+                ><br /><br />
+            </div>
+
+            <table align="center" class="table_1">
+                <tr>
+                    <!-- 첫번째 줄 시작 -->
+                    <td class="left_top">
+                        <div class="main_left">
+                            <div class="t_left">
+                                <h4>
+                                    * 필수항목 아님 *
+                                </h4>
+
+                                <p>01~09의 숫자</p>
+                                <p>10~19의 숫자</p>
+                                <p>20~29의 숫자</p>
+                                <p>30~39의 숫자</p>
+                                <p>40~45의 숫자</p>
+                                <br />
+                                <p>포함갯수 선택</p>
+                                <p>포함갯수 선택</p>
+                                <p>포함갯수 선택</p>
+                                <p>포함갯수 선택</p>
+                                <p>포함갯수 선택</p>
+
+                                <p>
+                                    <select
+                                        name="items1"
+                                        id="btnCot_0"
+                                        class="btnCot"
+                                        onclick="changeSelect()"
+                                    >
+                                        <option value="0">01~09</option>
+                                        <option value="1">1개</option>
+                                        <option value="2">2개</option>
+                                        <option value="3">3개</option>
+                                        <option value="4">4개</option>
+                                        <option value="5">5개</option>
+                                        <option value="6">6개</option>
+                                    </select>
+                                </p>
+
+                                <p>
+                                    <select
+                                        name="items1"
+                                        id="btnCot_1"
+                                        class="btnCot"
+                                        onclick="changeSelect()"
+                                    >
+                                        <option value="0">10~19</option>
+                                        <option value="1">1개</option>
+                                        <option value="2">2개</option>
+                                        <option value="3">3개</option>
+                                        <option value="4">4개</option>
+                                        <option value="5">5개</option>
+                                        <option value="6">6개</option>
+                                    </select>
+                                </p>
+
+                                <p>
+                                    <select
+                                        name="items1"
+                                        id="btnCot_2"
+                                        class="btnCot"
+                                        onclick="changeSelect()"
+                                    >
+                                        <option value="0">20~29</option>
+                                        <option value="1">1개</option>
+                                        <option value="2">2개</option>
+                                        <option value="3">3개</option>
+                                        <option value="4">4개</option>
+                                        <option value="5">5개</option>
+                                        <option value="6">6개</option>
+                                    </select>
+                                </p>
+
+                                <p>
+                                    <select
+                                        name="items1"
+                                        id="btnCot_3"
+                                        class="btnCot"
+                                        onclick="changeSelect()"
+                                    >
+                                        <option value="0">30~39</option>
+                                        <option value="1">1개</option>
+                                        <option value="2">2개</option>
+                                        <option value="3">3개</option>
+                                        <option value="4">4개</option>
+                                        <option value="5">5개</option>
+                                        <option value="6">6개</option>
+                                    </select>
+                                </p>
+
+                                <p>
+                                    <select
+                                        name="items1"
+                                        id="btnCot_4"
+                                        class="btnCot"
+                                        onclick="changeSelect()"
+                                    >
+                                        <option value="0">40~45</option>
+                                        <option value="1">1개</option>
+                                        <option value="2">2개</option>
+                                        <option value="3">3개</option>
+                                        <option value="4">4개</option>
+                                        <option value="5">5개</option>
+                                        <option value="6">6개</option>
+                                    </select>
+                                </p>
+                            </div>
+
+                            <div class="l_left">
+                                <h4>
+                                    * 필수항목 아님 *
+                                </h4>
+                                <br />
+                                <p>
+                                    01~09의 숫자<br />
+                                    포함갯수 선택
+                                </p>
+                                <select
+                                    name="items1"
+                                    id="btnCot_0_0"
+                                    class="btnCot"
+                                    onclick="changeSelect2()"
+                                >
+                                    <option value="0">01~09</option>
+                                    <option value="1">1개</option>
+                                    <option value="2">2개</option>
+                                    <option value="3">3개</option>
+                                    <option value="4">4개</option>
+                                    <option value="5">5개</option>
+                                    <option value="6">6개</option> </select
+                                ><br /><br />
+                                <p>
+                                    10~19의 숫자<br />
+                                    포함갯수 선택
+                                </p>
+                                <select
+                                    name="items1"
+                                    id="btnCot_1_1"
+                                    class="btnCot"
+                                    onclick="changeSelect2()"
+                                >
+                                    <option value="0">10~19</option>
+                                    <option value="1">1개</option>
+                                    <option value="2">2개</option>
+                                    <option value="3">3개</option>
+                                    <option value="4">4개</option>
+                                    <option value="5">5개</option>
+                                    <option value="6">6개</option> </select
+                                ><br /><br />
+                                <p>
+                                    20~29의 숫자<br />
+                                    포함갯수 선택
+                                </p>
+                                <select
+                                    name="items1"
+                                    id="btnCot_2_2"
+                                    class="btnCot"
+                                    onclick="changeSelect2()"
+                                >
+                                    <option value="0">20~29</option>
+                                    <option value="1">1개</option>
+                                    <option value="2">2개</option>
+                                    <option value="3">3개</option>
+                                    <option value="4">4개</option>
+                                    <option value="5">5개</option>
+                                    <option value="6">6개</option> </select
+                                ><br /><br />
+                                <p>
+                                    30~39의 숫자<br />
+                                    포함갯수 선택
+                                </p>
+                                <select
+                                    name="items1"
+                                    id="btnCot_3_3"
+                                    class="btnCot"
+                                    onclick="changeSelect2()"
+                                >
+                                    <option value="0">30~39</option>
+                                    <option value="1">1개</option>
+                                    <option value="2">2개</option>
+                                    <option value="3">3개</option>
+                                    <option value="4">4개</option>
+                                    <option value="5">5개</option>
+                                    <option value="6">6개</option> </select
+                                ><br /><br />
+                                <p>
+                                    40~45의 숫자<br />
+                                    포함갯수 선택
+                                </p>
+                                <select
+                                    name="items1"
+                                    id="btnCot_4_4"
+                                    class="btnCot"
+                                    onclick="changeSelect2()"
+                                >
+                                    <option value="0">40~45</option>
+                                    <option value="1">1개</option>
+                                    <option value="2">2개</option>
+                                    <option value="3">3개</option>
+                                    <option value="4">4개</option>
+                                    <option value="5">5개</option>
+                                    <option value="6">6개</option>
+                                </select>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td width="8"></td>
+                    <td>
+                        <div class="main_right">
+                            <p>
+                                한번클릭 - 빨강(제외),
+                            </p>
+                            <p>
+                                두번클릭 - 노랑(포함),
+                            </p>
+                            <p>
+                                세번클릭 - 취소
+                            </p>
+							<br>
+                            <button
+                                type="button"
+                                id="ClickNum1"
+                                class="clickNumOne"
+                                onClick="handleClick(1)"
+                            >
+                                01</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum2"
+                                class="clickNumOne"
+                                onClick="handleClick(2)"
+                            >
+                                02</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum3"
+                                class="clickNumOne"
+                                onClick="handleClick(3)"
+                            >
+                                03</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum4"
+                                class="clickNumOne"
+                                onClick="handleClick(4)"
+                            >
+                                04</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum5"
+                                class="clickNumOne"
+                                onClick="handleClick(5)"
+                            >
+                                05</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum6"
+                                class="clickNumOne"
+                                onClick="handleClick(6)"
+                            >
+                                06</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum7"
+                                class="clickNumOne"
+                                onClick="handleClick(7)"
+                            >
+                                07</button
+                            ><br /><br />
+                            <button
+                                type="button"
+                                id="ClickNum8"
+                                class="clickNumOne"
+                                onClick="handleClick(8)"
+                            >
+                                08</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum9"
+                                class="clickNumOne"
+                                onClick="handleClick(9)"
+                            >
+                                09</button
+                            >&nbsp;&nbsp;
+
+                            <button
+                                type="button"
+                                id="ClickNum10"
+                                class="clickNumOne"
+                                onClick="handleClick(10)"
+                            >
+                                10</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum11"
+                                class="clickNumOne"
+                                onClick="handleClick(11)"
+                            >
+                                11</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum12"
+                                class="clickNumOne"
+                                onClick="handleClick(12)"
+                            >
+                                12</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum13"
+                                class="clickNumOne"
+                                onClick="handleClick(13)"
+                            >
+                                13</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum14"
+                                class="clickNumOne"
+                                onClick="handleClick(14)"
+                            >
+                                14</button
+                            ><br /><br />
+                            <button
+                                type="button"
+                                id="ClickNum15"
+                                class="clickNumOne"
+                                onClick="handleClick(15)"
+                            >
+                                15</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum16"
+                                class="clickNumOne"
+                                onClick="handleClick(16)"
+                            >
+                                16</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum17"
+                                class="clickNumOne"
+                                onClick="handleClick(17)"
+                            >
+                                17</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum18"
+                                class="clickNumOne"
+                                onClick="handleClick(18)"
+                            >
+                                18</button
+                            >&nbsp;&nbsp;
+
+                            <button
+                                type="button"
+                                id="ClickNum19"
+                                class="clickNumOne"
+                                onClick="handleClick(19)"
+                            >
+                                19</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum20"
+                                class="clickNumOne"
+                                onClick="handleClick(20)"
+                            >
+                                20</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum21"
+                                class="clickNumOne"
+                                onClick="handleClick(21)"
+                            >
+                                21</button
+                            ><br /><br />
+                            <button
+                                type="button"
+                                id="ClickNum22"
+                                class="clickNumOne"
+                                onClick="handleClick(22)"
+                            >
+                                22</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum23"
+                                class="clickNumOne"
+                                onClick="handleClick(23)"
+                            >
+                                23</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum24"
+                                class="clickNumOne"
+                                onClick="handleClick(24)"
+                            >
+                                24</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum25"
+                                class="clickNumOne"
+                                onClick="handleClick(25)"
+                            >
+                                25</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum26"
+                                class="clickNumOne"
+                                onClick="handleClick(26)"
+                            >
+                                26</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum27"
+                                class="clickNumOne"
+                                onClick="handleClick(27)"
+                            >
+                                27</button
+                            >&nbsp;&nbsp;
+
+                            <button
+                                type="button"
+                                id="ClickNum28"
+                                class="clickNumOne"
+                                onClick="handleClick(28)"
+                            >
+                                28</button
+                            ><br /><br />
+                            <button
+                                type="button"
+                                id="ClickNum29"
+                                class="clickNumOne"
+                                onClick="handleClick(29)"
+                            >
+                                29</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum30"
+                                class="clickNumOne"
+                                onClick="handleClick(30)"
+                            >
+                                30</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum31"
+                                class="clickNumOne"
+                                onClick="handleClick(31)"
+                            >
+                                31</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum32"
+                                class="clickNumOne"
+                                onClick="handleClick(32)"
+                            >
+                                32</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum33"
+                                class="clickNumOne"
+                                onClick="handleClick(33)"
+                            >
+                                33</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum34"
+                                class="clickNumOne"
+                                onClick="handleClick(34)"
+                            >
+                                34</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum35"
+                                class="clickNumOne"
+                                onClick="handleClick(35)"
+                            >
+                                35</button
+                            ><br /><br />
+                            <button
+                                type="button"
+                                id="ClickNum36"
+                                class="clickNumOne"
+                                onClick="handleClick(36)"
+                            >
+                                36</button
+                            >&nbsp;&nbsp;
+
+                            <button
+                                type="button"
+                                id="ClickNum37"
+                                class="clickNumOne"
+                                onClick="handleClick(37)"
+                            >
+                                37</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum38"
+                                class="clickNumOne"
+                                onClick="handleClick(38)"
+                            >
+                                38</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum39"
+                                class="clickNumOne"
+                                onClick="handleClick(39)"
+                            >
+                                39</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum40"
+                                class="clickNumOne"
+                                onClick="handleClick(40)"
+                            >
+                                40</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum41"
+                                class="clickNumOne"
+                                onClick="handleClick(41)"
+                            >
+                                41</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum42"
+                                class="clickNumOne"
+                                onClick="handleClick(42)"
+                            >
+                                42</button
+                            ><br /><br />
+                            <button
+                                type="button"
+                                id="ClickNum43"
+                                class="clickNumOne"
+                                onClick="handleClick(43)"
+                            >
+                                43</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum44"
+                                class="clickNumOne"
+                                onClick="handleClick(44)"
+                            >
+                                44</button
+                            >&nbsp;&nbsp;
+                            <button
+                                type="button"
+                                id="ClickNum45"
+                                class="clickNumOne"
+                                onClick="handleClick(45)"
+                            >
+                                45
+                            </button>
+                            <div class="nbsp_1">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;
+                                <button type="button" id="btnGenerate_s_2" onclick="reSet_sel()">
+                                    초기화
+                                </button>
+                            </div>
+                            <div class="nbsp_2">
+                                <br />
+                                <button type="button" id="btnGenerate_s_2" onclick="reSet_sel()">
+                                    초기화
+                                </button>
+                            </div>
+
+                            <br /><br />
+
+                            &nbsp;&nbsp;&nbsp;
+                        </div>
+                    </td>
+                    <!-- 두번째 줄 끝 -->
+                </tr>
+            </table>
+            <br />
+            <table align="center">
+                <tr>
+                    <td width="500">
+                        <div class="wrapper"></div>
+                    </td>
+                    <td width="8"></td>
+
+                    <td width="225" align="left">
+                        <button type="button" id="btnGenerate_2">번호생성</button><br /><br />
+                        <button type="button" id="btnGenerate_b_2">전체복사</button><br /><br />
+                        <button type="button" id="btnGenerate_d_2">번호삭제</button><br /><br />
+                        <button type="button" id="btnGenerate_x_2">초기화</button>
+                    </td>
+                </tr>
+            </table>
+
+            <br /><br />
+
+            <br /><br />
+        </div>
+        <br /><br />
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox"></div>
+
+        <script>
+            function changeSelect() {
+                document.getElementById('btnCot_0_0').value = document.getElementById(
+                    'btnCot_0'
+                ).value;
+                document.getElementById('btnCot_1_1').value = document.getElementById(
+                    'btnCot_1'
+                ).value;
+                document.getElementById('btnCot_2_2').value = document.getElementById(
+                    'btnCot_2'
+                ).value;
+                document.getElementById('btnCot_3_3').value = document.getElementById(
+                    'btnCot_3'
+                ).value;
+                document.getElementById('btnCot_4_4').value = document.getElementById(
+                    'btnCot_4'
+                ).value;
+            }
+
+            function changeSelect2() {
+                document.getElementById('btnCot_0').value = document.getElementById(
+                    'btnCot_0_0'
+                ).value;
+                document.getElementById('btnCot_1').value = document.getElementById(
+                    'btnCot_1_1'
+                ).value;
+                document.getElementById('btnCot_2').value = document.getElementById(
+                    'btnCot_2_2'
+                ).value;
+                document.getElementById('btnCot_3').value = document.getElementById(
+                    'btnCot_3_3'
+                ).value;
+                document.getElementById('btnCot_4').value = document.getElementById(
+                    'btnCot_4_4'
+                ).value;
+            }
+        </script>
+
+        <script>
+            function popNum(num) {
+                if (num == 1) {
+                    $('#pop3').hide();
+                    $('#pop2').hide();
+                    $('#pop1').show();
+                    console.log('a');
+                } else if (num == 2) {
+                    $('#pop3').hide();
+                    $('#pop1').hide();
+                    $('#pop2').show();
+                    console.log('b');
+                } else {
+                    $('#pop2').hide();
+                    $('#pop1').hide();
+                    $('#pop3').show();
+                    console.log('c');
+                }
+            }
+        </script>
+        <!-- <!-- 자동랜덤숫자 pop1 -->
+        <script>
+            let btn = document.getElementById('btnGenerate');
+            let btn_d = document.getElementById('btnGenerate_d');
+            let btn_x = document.getElementById('btnGenerate_x');
+            let wrapper = document.getElementsByClassName('wrapper')[0];
+
+            let btn_2 = document.getElementById('btnGenerate_2');
+            let btn_d_2 = document.getElementById('btnGenerate_d_2');
+            let btn_x_2 = document.getElementById('btnGenerate_x_2');
+            let btn_s_2 = document.getElementById('btnGenerate_s_2');
+            let wrapper_2 = document.getElementsByClassName('wrapper')[1];
+
+            let maxNum = 45;
+            let arrayOfCombinations = [];
+			let arrayOfCombinations_2 = [];
+            let arrayOfNumbers = [];
+            let duplication = [];
+			let duplication_2 = [];
+            let dupliChange = [];
+			let dupliChange_2 = [];
+
+            let du_len = 0;
+            btn.addEventListener('click', (e) => {
+                e.preventDefault;
+                generate();
+                display(1);
+            });
+            btn_d.addEventListener('click', (e) => {
+                e.preventDefault;
+
+                fn_userDel();
+            });
+            btn_x.addEventListener('click', (e) => {
+                e.preventDefault;
+
+                display(3);
+            });
+
+            //pop 2 button start
+            btn_2.addEventListener('click', (e) => {
+                e.preventDefault;
+
+                generate_Check();
+            });
+            btn_d_2.addEventListener('click', (e) => {
+                e.preventDefault;
+
+                fn_userDel();
+            });
+            btn_x_2.addEventListener('click', (e) => {
+                e.preventDefault;
+
+                display(3);
+            });
+
+            btn_s_2.addEventListener('click', (e) => {
+                e.preventDefault;
+                reSet_sel();
+            });
+            function generate() {
+                while (arrayOfNumbers.length < 6) {
+                    let number = Math.floor(Math.random() * maxNum) + 1;
+
+                    if (arrayOfNumbers.indexOf(number) == -1) {
+                        arrayOfNumbers.push(number);
+                    }
+                }
+
+                arrayOfCombinations.push(
+                    arrayOfNumbers.sort(function (a, b) {
+                        return a - b;
+                    })
+                );
+
+                for (i = 0; i < arrayOfCombinations.length; i++) {
+                    duplication[i] = arrayOfCombinations[i];
+                }
+
+                console.log(duplication);
+
+                arrayOfNumbers = [];
+            }
+
+            function generate_Check() {
+                var selNum1 = Number($('#btnCot_0 option:selected').val());
+                var selNum2 = Number($('#btnCot_1 option:selected').val());
+                var selNum3 = Number($('#btnCot_2 option:selected').val());
+                var selNum4 = Number($('#btnCot_3 option:selected').val());
+                var selNum5 = Number($('#btnCot_4 option:selected').val());
+
+                var selTotal = selNum1 + selNum2 + selNum3 + selNum4 + selNum5;
+
+                var y_count_0 = [];
+                var y_count_1 = [];
+                var y_count_2 = [];
+                var y_count_3 = [];
+                var y_count_4 = [];
+
+                var r_count_0 = [];
+                var r_count_1 = [];
+                var r_count_2 = [];
+                var r_count_3 = [];
+                var r_count_4 = [];
+
+                if (selTotal > 6) {
+                    alert('로또조합은 숫자 6개 입니다. 설정값을 확인해주세요.');
+                } else {
+                    var result = 0;
+
+                    for (j = 0; j < redCount; j++) {
+                        var check_n = 0;
+                        if (Math.floor(redArr[j] / 10) == 0) {
+                            var search = r_count_0.indexOf(redArr[j]);
+                            if (search != -1) {
+                                r_count_0.splice(search, 1);
+                            }
+                            r_count_0.push(redArr[j]);
+                        } else if (Math.floor(redArr[j] / 10) == 1) {
+                            var search = r_count_1.indexOf(redArr[j]);
+                            if (search != -1) {
+                                r_count_1.splice(search, 1);
+                            }
+                            r_count_1.push(redArr[j]);
+                        } else if (Math.floor(redArr[j] / 10) == 2) {
+                            var search = r_count_2.indexOf(redArr[j]);
+                            if (search != -1) {
+                                r_count_2.splice(search, 1);
+                            }
+                            r_count_2.push(redArr[j]);
+                        } else if (Math.floor(redArr[j] / 10) == 3) {
+                            var search = r_count_3.indexOf(redArr[j]);
+                            if (search != -1) {
+                                r_count_3.splice(search, 1);
+                            }
+                            r_count_3.push(redArr[j]);
+                        } else if (Math.floor(redArr[j] / 10) == 4) {
+                            var search = r_count_4.indexOf(redArr[j]);
+                            if (search != -1) {
+                                r_count_4.splice(search, 1);
+                            }
+                            r_count_4.push(redArr[j]);
+                        }
+                    }
+
+                    for (j = 0; j < yellowCount; j++) {
+                        if (Math.floor(yellowArr[j] / 10) == 0) {
+                            y_count_0.push(yellowArr[j]);
+                            // name.push(yellowArr[j]);
+                        } else if (Math.floor(yellowArr[j] / 10) == 1) {
+                            y_count_1.push(yellowArr[j]);
+                            // name.push(yellowArr[j]);
+                        } else if (Math.floor(yellowArr[j] / 10) == 2) {
+                            y_count_2.push(yellowArr[j]);
+                            // name.push(yellowArr[j]);
+                        } else if (Math.floor(yellowArr[j] / 10) == 3) {
+                            y_count_3.push(yellowArr[j]);
+                            // name.push(yellowArr[j]);
+                        } else if (Math.floor(yellowArr[j] / 10) == 4) {
+                            y_count_4.push(yellowArr[j]);
+                            // name.push(yellowArr[j]);
+                        }
+                    }
+
+                    var no_to_1 =
+                        Number(y_count_1.length) +
+                        Number(y_count_2.length) +
+                        Number(y_count_3.length) +
+                        Number(y_count_4.length);
+                    var no_to_2 =
+                        Number(y_count_0.length) +
+                        Number(y_count_2.length) +
+                        Number(y_count_3.length) +
+                        Number(y_count_4.length);
+                    var no_to_3 =
+                        Number(y_count_1.length) +
+                        Number(y_count_0.length) +
+                        Number(y_count_3.length) +
+                        Number(y_count_4.length);
+                    var no_to_4 =
+                        Number(y_count_1.length) +
+                        Number(y_count_2.length) +
+                        Number(y_count_0.length) +
+                        Number(y_count_4.length);
+                    var no_to_5 =
+                        Number(y_count_1.length) +
+                        Number(y_count_2.length) +
+                        Number(y_count_3.length) +
+                        Number(y_count_0.length);
+                    if (
+                        (selNum1 != 0 && selNum1 > 9 - Number(r_count_0.length)) ||
+                        (selNum1 != 0 && selNum1 < y_count_0.length) ||
+                        (selNum1 != 0 && selNum1 > 6 - no_to_1)
+                    ) {
+                        alert('Error: 1~9 선택갯수와 빨강(제외) or 노랑(포함) 갯수를 확인하세요. ');
+                        result = 1;
+                    } else if (
+                        (selNum2 != 0 && selNum2 > 10 - Number(r_count_1.length)) ||
+                        (selNum2 != 0 && selNum2 < y_count_1.length) ||
+                        (selNum2 != 0 && selNum2 > 6 - no_to_2)
+                    ) {
+                        alert(
+                            'Error: 10~19 선택갯수와 빨강(제외) or 노랑(포함) 갯수를 확인하세요.'
+                        );
+                        result = 1;
+                    } else if (
+                        (selNum3 != 0 && selNum3 > 10 - Number(r_count_2.length)) ||
+                        (selNum3 != 0 && selNum3 < y_count_2.length) ||
+                        (selNum3 != 0 && selNum3 > 6 - no_to_3)
+                    ) {
+                        alert(
+                            'Error: 20~29 선택갯수와 빨강(제외) or 노랑(포함) 갯수를 확인하세요.'
+                        );
+                        result = 1;
+                    } else if (
+                        (selNum4 != 0 && selNum4 > 10 - Number(r_count_3.length)) ||
+                        (selNum4 != 0 && selNum4 < y_count_3.length) ||
+                        (selNum4 != 0 && selNum4 > 6 - no_to_4)
+                    ) {
+                        alert(
+                            'Error: 30~39 선택갯수와 빨강(제외) or 노랑(포함) 갯수를 확인하세요.'
+                        );
+                        result = 1;
+                    } else if (
+                        (selNum5 != 0 && selNum5 > 6 - Number(r_count_4.length)) ||
+                        (selNum5 != 0 && selNum5 < y_count_4.length) ||
+                        (selNum5 != 0 && selNum5 > 6 - no_to_5)
+                    ) {
+                        alert(
+                            'Error: 40~45 선택갯수와 빨강(제외) or 노랑(포함) 갯수를 확인하세요.'
+                        );
+                        result = 1;
+                    }
+
+                    var null_count_1 = 0;
+                    var null_count_2 = 0;
+                    var null_count_3 = 0;
+                    var null_count_4 = 0;
+                    var null_count_5 = 0;
+                    if (selNum1 == 0 && y_count_0.length > 0) {
+                        null_count_1 = y_count_0.length;
+                    }
+                    if (selNum2 == 0 && y_count_1.length > 0) {
+                        null_count_2 = y_count_1.length;
+                    }
+                    if (selNum3 == 0 && y_count_2.length > 0) {
+                        null_count_3 = y_count_2.length;
+                    }
+                    if (selNum4 == 0 && y_count_3.length > 0) {
+                        null_count_4 = y_count_3.length;
+                    }
+                    if (selNum5 == 0 && y_count_4.length > 0) {
+                        null_count_5 = y_count_4.length;
+                    }
+                    var null_total =
+                        Number(null_count_1) +
+                        Number(null_count_2) +
+                        Number(null_count_3) +
+                        Number(null_count_4) +
+                        Number(null_count_5);
+
+                    if (null_total + selTotal > 6) {
+                        alert('Error: 선택갯수와 빨강(제외) or 노랑(포함) 갯수를 확인하세요.');
+                        result = 1;
+                    }
+                }
+
+                if (result == 0) {
+                    generate_2(selNum1, selNum2, selNum3, selNum4, selNum5, selTotal);
+                }
+            }
+
+            function generate_2(a, b, c, d, e, t) {
+                // while (arrayOfNumbers.length < 6) {
+                //     let number = Math.floor(Math.random() * maxNum) + 1;
+
+                //     if (arrayOfNumbers.indexOf(number) == -1) {
+                //         arrayOfNumbers.push(number);
+                //     }
+                // }
+                var numArr = new Array();
+
+                for (i = 0; i < 45; i++) {
+                    numArr[i] = i + 1;
+                }
+
+                if (redCount != 0) {
+                    for (j = 0; j < redCount; j++) {
+                        // var search = arrayOfNumbers.indexOf(redArr[j]);
+                        // if (search != -1) {
+                        //     arrayOfNumbers.splice(search, 1);
+                        // }
+                        var search = numArr.indexOf(redArr[j]);
+                        if (search != -1) {
+                            numArr.splice(search, 1);
+                        }
+                    }
+                }
+
+                var numResult1 = new Array();
+                var numResult2 = new Array();
+                var numResult3 = new Array();
+                var numResult4 = new Array();
+                var numResult5 = new Array();
+                if (yellowCount != 0) {
+                    for (j = 0; j < yellowCount; j++) {
+                        var search = numArr.indexOf(yellowArr[j]);
+
+                        if (search != -1) {
+                            numArr.splice(search, 1);
+                        }
+
+                        if (Math.floor(yellowArr[j] / 10) == 0) {
+                            numResult1.push(yellowArr[j]);
+                        } else if (Math.floor(yellowArr[j] / 10) == 1) {
+                            numResult2.push(yellowArr[j]);
+                        } else if (Math.floor(yellowArr[j] / 10) == 2) {
+                            numResult3.push(yellowArr[j]);
+                        } else if (Math.floor(yellowArr[j] / 10) == 3) {
+                            numResult4.push(yellowArr[j]);
+                        } else if (Math.floor(yellowArr[j] / 10) == 4) {
+                            numResult5.push(yellowArr[j]);
+                        }
+                    }
+                }
+
+                var num_set1 = new Array();
+                var num_set2 = new Array();
+                var num_set3 = new Array();
+                var num_set4 = new Array();
+                var num_set5 = new Array();
+
+                var lend_1 = new Array();
+                var lend_2 = new Array();
+                var lend_3 = new Array();
+                var lend_4 = new Array();
+                var lend_5 = new Array();
+
+                if (a != 0 || b != 0 || c != 0 || d != 0 || e != 0) {
+                    for (i = 0; i < numArr.length; i++) {
+                        if (Math.floor(numArr[i] / 10) == 0) {
+                            num_set1.push(numArr[i]);
+                        } else if (Math.floor(numArr[i] / 10) == 1) {
+                            num_set2.push(numArr[i]);
+                        } else if (Math.floor(numArr[i] / 10) == 2) {
+                            num_set3.push(numArr[i]);
+                        } else if (Math.floor(numArr[i] / 10) == 3) {
+                            num_set4.push(numArr[i]);
+                        } else if (Math.floor(numArr[i] / 10) == 4) {
+                            num_set5.push(numArr[i]);
+                        }
+                    }
+
+                    if (a != numResult1.length) {
+                        var num_plus = new Array();
+                        var coCot = a - Number(numResult1.length);
+
+                        for (j = 0; j < coCot; j++) {
+                            num_plus[j] = num_set1[Math.floor(Math.random() * num_set1.length)];
+                            var search = numArr.indexOf(num_plus[j]);
+                            if (search != -1) {
+                                numArr.splice(search, 1);
+                            }
+                            var search = num_set1.indexOf(num_plus[j]);
+                            if (search != -1) {
+                                num_set1.splice(search, 1);
+                            }
+                        }
+
+                        for (i = 0; i < num_set1.length; i++) {
+                            var search = numArr.indexOf(num_set1[i]);
+                            if (search != -1) {
+                                numArr.splice(search, 1);
+                            }
+                        }
+                        lend_1 = num_plus;
+                    } else if (a == numResult1.length) {
+                        lend_1 = [];
+                    }
+
+                    if (b != numResult2.length) {
+                        var num_plus = new Array();
+                        var coCot = b - Number(numResult2.length);
+                        for (j = 0; j < coCot; j++) {
+                            num_plus[j] = num_set2[Math.floor(Math.random() * num_set2.length)];
+                            var search = numArr.indexOf(num_plus[j]);
+                            if (search != -1) {
+                                numArr.splice(search, 1);
+                            }
+                            var search = num_set2.indexOf(num_plus[j]);
+                            if (search != -1) {
+                                num_set2.splice(search, 1);
+                            }
+                        }
+                        for (i = 0; i < num_set2.length; i++) {
+                            var search = numArr.indexOf(num_set2[i]);
+                            if (search != -1) {
+                                numArr.splice(search, 1);
+                            }
+                        }
+                        lend_2 = num_plus;
+                    } else if (b == numResult2.length) {
+                        lend_2 = [];
+                    }
+
+                    if (c != numResult3.length) {
+                        var num_plus = new Array();
+                        var coCot = c - Number(numResult3.length);
+                        for (j = 0; j < coCot; j++) {
+                            num_plus[j] = num_set3[Math.floor(Math.random() * num_set3.length)];
+                            var search = numArr.indexOf(num_plus[j]);
+                            if (search != -1) {
+                                numArr.splice(search, 1);
+                            }
+                            var search = num_set3.indexOf(num_plus[j]);
+                            if (search != -1) {
+                                num_set3.splice(search, 1);
+                            }
+                        }
+                        for (i = 0; i < num_set3.length; i++) {
+                            var search = numArr.indexOf(num_set3[i]);
+                            if (search != -1) {
+                                numArr.splice(search, 1);
+                            }
+                        }
+                        lend_3 = num_plus;
+                    } else if (c == numResult3.length) {
+                        lend_3 = [];
+                    }
+
+                    if (d != numResult4.length) {
+                        var num_plus = new Array();
+                        var coCot = d - Number(numResult4.length);
+                        for (j = 0; j < coCot; j++) {
+                            num_plus[j] = num_set4[Math.floor(Math.random() * num_set4.length)];
+                            var search = numArr.indexOf(num_plus[j]);
+                            if (search != -1) {
+                                numArr.splice(search, 1);
+                            }
+                            var search = num_set4.indexOf(num_plus[j]);
+                            if (search != -1) {
+                                num_set4.splice(search, 1);
+                            }
+                        }
+                        for (i = 0; i < num_set4.length; i++) {
+                            var search = numArr.indexOf(num_set4[i]);
+                            if (search != -1) {
+                                numArr.splice(search, 1);
+                            }
+                        }
+                        lend_4 = num_plus;
+                    } else if (d == numResult4.length) {
+                        lend_4 = [];
+                    }
+
+                    if (e != numResult5.length) {
+                        var num_plus = new Array();
+                        var coCot = e - Number(numResult5.length);
+                        for (j = 0; j < coCot; j++) {
+                            num_plus[j] = num_set5[Math.floor(Math.random() * num_set5.length)];
+                            var search = numArr.indexOf(num_plus[j]);
+                            if (search != -1) {
+                                numArr.splice(search, 1);
+                            }
+                            var search = num_set5.indexOf(num_plus[j]);
+                            if (search != -1) {
+                                num_set5.splice(search, 1);
+                            }
+                        }
+                        for (i = 0; i < num_set5.length; i++) {
+                            var search = numArr.indexOf(num_set5[i]);
+                            if (search != -1) {
+                                numArr.splice(search, 1);
+                            }
+                        }
+                        lend_5 = num_plus;
+                    } else if (e == numResult5.length) {
+                        lend_5 = [];
+                    }
+                }
+
+                var lend_to = yellowArr.concat(lend_1, lend_2, lend_3, lend_4, lend_5);
+
+                if (6 - Number(lend_to.length) != 0) {
+                    for (i = 0; i < 6 - Number(lend_to.length); i++) {
+                        let number = numArr[Math.floor(Math.random() * numArr.length)];
+
+                        if (arrayOfNumbers.indexOf(number) == -1) {
+                            arrayOfNumbers.push(number);
+                        }
+
+                        if (arrayOfNumbers[arrayOfNumbers.length - 1] == undefined) {
+                            alert('각 1개씩 포함하여 숫자가 5개만 나옵니다.');
+                        }
+                        var search = numArr.indexOf(number);
+                        if (search != -1) {
+                            numArr.splice(search, 1);
+                        }
+                    }
+                }
+
+                arrayOfNumbers = arrayOfNumbers.concat(lend_to);
+
+                arrayOfCombinations_2.push(
+                    arrayOfNumbers.sort(function (a, b) {
+                        return a - b;
+                    })
+                );
+				
+				for (i = 0; i < arrayOfCombinations_2.length; i++) {
+                    duplication_2[i] = arrayOfCombinations_2[i];
+                }
+
+                arrayOfNumbers = [];
+                display(2);
+            }
+
+            function display(num) {
+                if (num == 1) {
+                    let listElement = document.createElement('ul');
+
+                    wrapper.appendChild(listElement);
+
+                    let lengthOfArray = arrayOfCombinations.length;
+                    for (let i = 0; i < lengthOfArray; i++) {
+                        listElement.innerHTML = `<div class="num-text-box p3" data-maxlength="200" id="update"><li class="popSel" value="1"><input type="checkbox" name="chk_info" value=${[
+                            i,
+                        ]} class=${[i]}>&nbsp&nbsp${arrayOfCombinations[i].join(', ')}</li></div>`;
+                    }
+                } else if (num == 2) {
+                    let listElement = document.createElement('ul');
+
+                    wrapper_2.appendChild(listElement);
+                    let lengthOfArray = arrayOfCombinations_2.length;
+                    for (let i = 0; i < lengthOfArray; i++) {
+                        listElement.innerHTML = `<div class="num-text-box p3" data-maxlength="200" id="update"><li class="popSel" value="2"><input type="checkbox" name="chk_info" value=${[
+                            i,
+                        ]} class=${[i]}>&nbsp&nbsp${arrayOfCombinations_2[i].join(', ')}</li></div>`;
+                    }
+                } else if (num == 3) {
+                    $('.popSel').closest('ul').remove();
+                }
+            }
+
+            /* 삭제(체크박스된 것 전부) */
+            function fn_userDel() {
+                var userid = '';
+                var memberChk = document.getElementsByName('chk_info');
+
+                var chked = false;
+                var indexid = false;
+                for (i = 0; i < memberChk.length; i++) {
+                    if (memberChk[i].checked) {
+                        if (indexid) {
+                            userid = userid + '-';
+                        }
+                        userid = userid + memberChk[i].value;
+                        indexid = true;
+                    }
+                }
+                var arr = new Array();
+                arr = userid.split('-');
+
+                if (!indexid) {
+                    alert('삭제할 번호를 체크해 주세요.');
+                    return;
+                } else {
+                    for (i = 0; i < arr.length; i++) {
+                        ret = '.' + arr[i];
+                        $(ret).closest('ul').remove();
+                        dupliChange.push(arrayOfCombinations[arr[i]]);
+						dupliChange_2.push(arrayOfCombinations_2[arr[i]]);
+                        ret = '';
+                    }
+                }
+            }
+
+            function reSet_sel() {
+                document.getElementById('btnCot_0').value = 0;
+                document.getElementById('btnCot_1').value = 0;
+                document.getElementById('btnCot_2').value = 0;
+                document.getElementById('btnCot_3').value = 0;
+                document.getElementById('btnCot_4').value = 0;
+
+                document.getElementById('btnCot_0_0').value = 0;
+                document.getElementById('btnCot_1_1').value = 0;
+                document.getElementById('btnCot_2_2').value = 0;
+                document.getElementById('btnCot_3_3').value = 0;
+                document.getElementById('btnCot_4_4').value = 0;
+
+                for (i = 1; i <= 45; i++) {
+                    const ClickNum = document.querySelector('#ClickNum' + i);
+                    const hasClass = ClickNum.classList.contains('clickNumOne');
+                    const hasClass_1 = ClickNum.classList.contains('clickNumTwo');
+                    const hasClass_2 = ClickNum.classList.contains('clickNumThree');
+                    if (!hasClass && hasClass_1 == true) {
+                        ClickNum.classList.remove('clickNumTwo');
+                        ClickNum.classList.add('clickNumOne');
+                    } else if (!hasClass && hasClass_2 == true) {
+                        ClickNum.classList.remove('clickNumThree');
+                        ClickNum.classList.add('clickNumOne');
+                    }
+
+                    redArr = [];
+                    yellowArr = [];
+                    redCount = 0;
+                    yellowCount = 0;
+                }
+            }
+        </script>
+
+        <script>
+            if ($(window).width() < 768) {
+                $('td.left_top').each(function (i, item) {
+                    var row = $(item).clone(true).prop('colspan', '2').wrapAll('<tr />');
+                    $(item).closest('tr').after(row);
+                    $(item).remove();
+                });
+            }
+        </script>
+
+        <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            function copyToClipboard(val) {
+                var t = document.createElement('textarea');
+
+                document.body.appendChild(t);
+                t.value = val;
+                t.select();
+                document.execCommand('copy');
+                document.body.removeChild(t);
+            }
+            $('#btnGenerate_b').click(function () {
+                if (dupliChange.length != 0) {
+                    for (i = 0; i < dupliChange.length; i++) {
+                        var search = arrayOfCombinations.indexOf(dupliChange[i]);
+                        if (search != -1) {
+                            arrayOfCombinations.splice(search, 1);
+                        }
+                    }
+
+                    copyToClipboard(' * 로또생성번호 * \n' + arrayOfCombinations.join('\n'));
+                } else {
+                    copyToClipboard(' * 로또생성번호 * \n' + arrayOfCombinations.join('\n'));
+                }
+
+                for (j = 0; j < duplication.length; j++) {
+                    arrayOfCombinations[j] = duplication[j];
+                }
+                alert('복사완료!');
+            });
+            $('#btnGenerate_b_2').click(function () {
+                if (dupliChange_2.length != 0) {
+                    for (i = 0; i < dupliChange_2.length; i++) {
+                        var search = arrayOfCombinations_2.indexOf(dupliChange_2[i]);
+                        if (search != -1) {
+                            arrayOfCombinations_2.splice(search, 1);
+                        }
+                    }
+
+                    copyToClipboard(' * 로또생성번호 * \n' + arrayOfCombinations_2.join('\n'));
+                } else {
+                    copyToClipboard(' * 로또생성번호 * \n' + arrayOfCombinations_2.join('\n'));
+                }
+
+                for (j = 0; j < duplication_2.length; j++) {
+                    arrayOfCombinations_2[j] = duplication_2[j];
+                }
+                alert('복사완료!');
+            });
+        </script>
+		
+		
+		<script>
+		let a =[];
+			console.log("bb");
+			console.log(a[0]);
+			if( a[0] ==undefined){
+				console.log("aa");
+			}
+		
+		</script>
+    </body>
+
+    <!-- Copyright (c) 2020 by nikhil (https://codepen.io/nikhil/pen/GuAho)
+		 Copyright (c) 2020 by Irving Armenta (https://codepen.io/irvingarmenta/pen/bpLvZL)
+		 Copyright (c) 2020 by Prakash (https://codepen.io/imprakash/pen/GgNMXO)
+		 Copyright (c) 2020 by Lewi Hussey (https://codepen.io/Lewitje/pen/doJRBX)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+	-->
+</html>

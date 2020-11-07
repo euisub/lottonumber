@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script
+            type="text/javascript"
+            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f9c4521d57fa994"
+        ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+            integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+            crossorigin="anonymous"
+        />
+
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="indexStyle.css" />
+    </head>
+    <body>
+        <script type="text/javascript" src="search.js"></script>
+        <!-- 검색 js -->
+
+        <ul class="nav justify-content-center naveSize">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">꿈해몽</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="fortune.html">오늘의 운세</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="numCheck.html">1등번호&장소확인</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="place.html">주변로또판매점</a>
+            </li> -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="numCC.html">로또번호생성</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="suda.html">방명록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="cucu.html">광고</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+                    >Disabled</a
+                >
+            </li> -->
+        </ul>
+
+        <div class="title_name">
+            <h2>Lotto Dream Numer</h2>
+            <div class="p1">
+                <p>여러분의 꿈을 입력해서 행운의 숫자를 알아보세요.</p>
+            </div>
+            <div class="p2">
+                <p>* 사용법 *</p>
+            </div>
+            <div class="text-box p3" data-maxlength="250">
+                <p>ㅁ 꿈의 핵심 키워드(단어)로 입력하세요.</p>
+                <p>ㅁ ex) 벼락맞는 꿈 => `벼락` 입력</p>
+                <p>ㅁ 띄어쓰기로 여러가지 키워드(단어) 입력가능</p>
+                <p>ㅁ ex) 하늘 돼지 돈 개구리 기차 과일</p>
+                <p>ㅁ 특수기호는 사용할 수 없습니다.</p>
+                <p>ㅁ 맨앞에 공백이 포함된 경우 키워드가 없다고 인식</p>
+            </div>
+        </div>
+
+        <div class="form-wrapper-dark-cf">
+            <div class="cf">
+                <input type="text" id="text1"  onkeyup="enterkey()" placeholder="Search here..." required />
+                <!-- <a href="#popup1"><button type="button" onclick="compareText()">Search</button></a> -->
+            </div>
+		</div>
+        <button type="button" id="btnGenerate" onclick="compareText()">꿈 검색</button
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" id="btnGenerate_b">복사하기</button
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" id="btnGenerate_x">초기화</button>
+        <div class="wrapper">
+            <div id="lottoNum"></div>
+        </div>
+        <br /><br />
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox"></div>
+
+        <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            function enterkey() {
+                if (window.event.keyCode == 13) {
+                    // 엔터키가 눌렸을 때 실행할 내용
+					console.log("aa");
+                    compareText();
+                }
+            }
+
+            function copyToClipboard(val) {
+                var t = document.createElement('textarea');
+
+                document.body.appendChild(t);
+                t.value = val;
+                t.select();
+                document.execCommand('copy');
+                document.body.removeChild(t);
+            }
+            $('#btnGenerate_b').click(function () {
+                console.log(result);
+                copyToClipboard(' * 로또 꿈 해몽 숫자 * \n' + result.join('\n'));
+
+                alert('복사완료!');
+            });
+
+            $('#btnGenerate_x').click(function () {
+                result = [];
+                result.push('복사할 내용이 없습니다.');
+                $('#lottoNum').html('');
+                document.getElementById('text1').value = null;
+            });
+        </script>
+
+        <!-- <div id="popup1" class="overlay">
+            <div class="popup">
+                <a class="close" href="#">&times;</a>
+                <h2 id="lottoNum"></h2>
+            </div>
+        </div> -->
+
+        <!-- <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+            /*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+        //     (function () {
+        //         // DON'T EDIT BELOW THIS LINE
+        //         var d = document,
+        //             s = d.createElement('script');
+        //         s.src = 'https://lottonumber.disqus.com/embed.js';
+        //         s.setAttribute('data-timestamp', +new Date());
+        //         (d.head || d.body).appendChild(s);
+        //     })();
+        // </script>
+        // <noscript
+        //     >Please enable JavaScript to view the
+        //     <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
+    </body>
+
+    <!-- Copyright (c) 2020 by nikhil (https://codepen.io/nikhil/pen/GuAho)
+		 Copyright (c) 2020 by Irving Armenta (https://codepen.io/irvingarmenta/pen/bpLvZL)
+		 Copyright (c) 2020 by Prakash (https://codepen.io/imprakash/pen/GgNMXO)
+		 Copyright (c) 2020 by Lewi Hussey (https://codepen.io/Lewitje/pen/doJRBX)
+ 		 Copyright (c) 2020 by Vijaya Kumar Vulchi (https://codepen.io/vulchivijay/pen/rxyBpg)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+	-->
+</html>
